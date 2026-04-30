@@ -33,6 +33,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: meu-app-logistica
-          # O asterisco (**) ajuda a encontrar o APK em qualquer subpasta de build
-          path: build/**/*.apk
+          # Agora usamos o nome exato que o log mostrou: teste.apk
+          path: build/apk/teste.apk
           if-no-files-found: error
