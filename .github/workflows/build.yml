@@ -26,12 +26,13 @@ jobs:
 
       - name: Build APK
         run: |
-          # Aceita licenças do Android e faz o build silencioso
+          # O comando build gera o arquivo, vamos garantir que ele termine
           yes | flet build apk --verbose
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: meu-app-logistica
-          # Este é o caminho padrão onde o Flet salva o APK gerado
-          path: build/apk/app-release.apk
+          # O asterisco (**) ajuda a encontrar o APK em qualquer subpasta de build
+          path: build/**/*.apk
+          if-no-files-found: error
