@@ -1,0 +1,4 @@
+[build.android]
+product = "FluxoDeRotas"
+description = "Otimizador de entregas para Shopee e ML"
+permissions = ["INTERNET"]
