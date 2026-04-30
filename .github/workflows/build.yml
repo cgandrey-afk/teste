@@ -1,4 +1,5 @@
 name: Build Flet APK
+
 on: [push]
 
 jobs:
@@ -15,14 +16,22 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.2' # Versão que o Flet moderno geralmente exige
+          flutter-version: '3.22.2'
 
       - name: Install Dependencies
         run: |
           pip install flet
+          # Garante que o requirements.txt que criamos seja instalado[cite: 1, 2]
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Build APK
         run: |
-          # O comando 'yes' responde automaticamente 'y' para qualquer pergunta do terminal
+          # Aceita licenças do Android e faz o build silencioso
           yes | flet build apk --verbose
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: meu-app-logistica
+          # Este é o caminho padrão onde o Flet salva o APK gerado
+          path: build/apk/app-release.apk
