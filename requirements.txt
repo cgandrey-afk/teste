@@ -1,2 +1,9 @@
 flet
+pandas
+numpy
+google-cloud-firestore
+google-auth
 toml
+geopy
+num2words
+openpyxl
